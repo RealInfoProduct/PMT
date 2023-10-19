@@ -8,6 +8,8 @@ import { PartylistComponent } from './partylist/partylist.component';
 import { FirmMasterComponent } from './firm-master/firm-master.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BalancesheetComponent } from './balancesheet/balancesheet.component';
+import { PlatformmasterComponent } from './platformmaster/platformmaster.component';
+import { OrdermasterComponent } from './ordermaster/ordermaster.component';
 
 
 
@@ -19,6 +21,8 @@ import { BalancesheetComponent } from './balancesheet/balancesheet.component';
     PartylistComponent,
     FirmMasterComponent,
     BalancesheetComponent,
+    PlatformmasterComponent,
+    OrdermasterComponent,
   ],
   imports: [
     CommonModule,

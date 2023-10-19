@@ -1,0 +1,83 @@
+<div class="container-fluid order_list">
+    <div class="card prime-table">
+        <div class="table-header">
+            <span>Plat Form List</span>
+            <div class="add_admin_button">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ProjectModal">
+                    New Plat Form
+                </button>
+            </div>
+        </div>
+        <div class="row m-0 table-body">
+            <p-table  [paginator]="false" [rows]="10" [showCurrentPageReport]="true" [scrollable]="true"
+                scrollDirection="both" responsiveLayout="scroll" [style]="{'margin-top': '8px'}"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 33%;">Sr</th>
+                        <th style="width: 33%;">PlatForm Name</th>
+                        <th style="width: 33%;">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                    <tr>
+                        <td style="width: 33%;">{{i +1 }}</td>
+                        <td style="width: 33%;">{{item.party_name}}</td>
+                        <td style="width: 33%;">
+                            <div class="button_icon_edit" data-bs-toggle="modal"  data-bs-target="#ProjectModal">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                            <div class="button_icon_delete" >
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr class="record">
+                        <td colspan="12" class="p-text-center p-p-3">No Recode Found</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal ProjectModal -->
+<div class="modal fade" id="ProjectModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"> Create PlatForm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div>
+                <div class="modal-body">
+                    <form [formGroup]="platform">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group m-3">
+                                    <label for="text">PlatForm Name</label>
+                                    <input type="text" formControlName="platformname" class="form-control"
+                                        placeholder="Enter a PlatForm Name">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <button type="button" (click)="plateformData()" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-toast></p-toast>
+<app-spinner *ngIf=""></app-spinner>
+<p-confirmDialog header="Confirmation"></p-confirmDialog>
