@@ -1,0 +1,163 @@
+<div class="container-fluid order_list">
+    <div class="card prime-table">
+        <div class="table-header">
+            <span>Firm Master List</span>
+            <div class="add_admin_button">
+                <button type="button" (click)="addFirm()" class="btn btn-secondary" data-bs-toggle="modal"
+                    data-bs-target="#ProjectModal">
+                    Add Firm
+                </button>
+            </div>
+        </div>
+        <div class="row m-0 table-body">
+            <p-table [value]="firmList" [paginator]="false" [rows]="10" [showCurrentPageReport]="true"
+                [scrollable]="true" scrollDirection="both" responsiveLayout="scroll" [style]="{'margin-top': '8px'}"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 10%;">Sr</th>
+                        <th style="width: 15%;">Header</th>
+                        <th style="width: 15%;">Mobile No</th>
+                        <th style="width: 15%;">Sub Header</th>
+                        <th style="width: 15%;">Personal Mobile No</th>
+                        <th style="width: 25%;">Address</th>
+                        <th style="width: 15%;">Bank Name</th>
+                        <th style="width: 15%;">GST No</th>
+                        <th style="width: 15%;">Bank IFSC</th>
+                        <th style="width: 15%;">GST Percentage</th>
+                        <th style="width: 15%;">Bank Account No</th>
+                        <th style="width: 15%;">Pan No</th>
+                        <th style="width: 10%;">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                    <tr>
+                        <td style="width: 10%;">{{i +1 }}</td>
+                        <td style="width: 15%;">{{item.firm_header}}</td>
+                        <td style="width: 15%;">{{item.firm_mobileno}}</td>
+                        <td style="width: 15%;">{{item.firm_subheader}}</td>
+                        <td style="width: 15%;">{{item.firm_personalmobileno}}</td>
+                        <td style="width: 25%;">{{item.firm_address}}</td>
+                        <td style="width: 15%;">{{item.firm_bankname}}</td>
+                        <td style="width: 15%;">{{item.firm_GSTNo}}</td>
+                        <td style="width: 15%;">{{item.firm_BankIFSC}}</td>
+                        <td style="width: 15%;">{{item.firm_GSTpercentage}}</td>
+                        <td style="width: 15%;">{{item.firm_bankaccountno}}</td>
+                        <td style="width: 15%;">{{item.firm_pannor}}</td>
+                        <td style="width: 10%;">
+                            <div (click)="editData(item)" class="button_icon_edit" data-bs-toggle="modal"
+                                data-bs-target="#ProjectModal">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                            <div (click)="deleteFirmMasterList(item)" class="button_icon_delete">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr class="record">
+                        <td colspan="12" class="p-text-center p-p-3">No Recode Found</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal ProjectModal -->
+<div class="modal fade" id="ProjectModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"> Create Firm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div #contentToCapture>
+                <div class="modal-body">
+                    <form [formGroup]="firmMasterList">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group m-3">
+                                    <label for="text">Header</label>
+                                    <input type="text" formControlName="header" class="form-control"
+                                        placeholder="Enter Header">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Mobile No</label>
+                                    <input type="text" formControlName="mobileno" class="form-control"
+                                        placeholder="Enter Mobile No">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Sub Header</label>
+                                    <input type="text" formControlName="subheader" class="form-control"
+                                        placeholder="Enter Sub Header">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group m-3">
+                                    <label for="text">Personal Mobile No </label>
+                                    <input type="text" formControlName="personalmobileno" class="form-control"
+                                        placeholder="Enter Personal Mobile No">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Address</label>
+                                    <input type="text" formControlName="address" class="form-control"
+                                        placeholder="Enter Address">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Bank Name</label>
+                                    <input type="text" formControlName="bankname" class="form-control"
+                                        placeholder="Enter Bank Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group m-3">
+                                    <label for="text">GST No</label>
+                                    <input type="text" formControlName="GSTNo" class="form-control"
+                                        placeholder="Enter GST No">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Bank IFSC</label>
+                                    <input type="text" formControlName="BankIFSC" class="form-control"
+                                        placeholder="Enter Bank IFSC">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">GST Percentage</label>
+                                    <input type="text" formControlName="GSTpercentage" class="form-control"
+                                        placeholder="Enter GST Percentage">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group m-3">
+                                    <label for="text">Bank Account No </label>
+                                    <input type="text" formControlName="bankaccountno" class="form-control"
+                                        placeholder="Enter Bank Account No">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Pan No</label>
+                                    <input type="text" formControlName="panno" class="form-control"
+                                        placeholder="Enter Pan No">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" (click)="partyData()"
+                            data-bs-dismiss="modal">UpDate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-toast></p-toast>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<p-confirmDialog header="Confirmation"></p-confirmDialog>

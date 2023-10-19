@@ -1,0 +1,113 @@
+<div class="container-fluid order_list">
+    <div class="card prime-table">
+        <div class="table-header">
+            <span>Customer List</span>
+            <div class="add_admin_button">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ProjectModal">
+                    New Customer
+                </button>
+            </div>
+        </div>
+        <div class="row m-0 table-body">
+            <p-table [paginator]="false" [rows]="10" [showCurrentPageReport]="true" [scrollable]="true"
+                scrollDirection="both" responsiveLayout="scroll" [style]="{'margin-top': '8px'}"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 10%;">Sr</th>
+                        <th style="width: 10%;">Name</th>
+                        <th style="width: 10%;">GST</th>
+                        <th style="width: 15%;">Mobile Number</th>
+                        <th style="width: 15%;">Pan Number</th>
+                        <th style="width: 20%;">Address</th>
+                        <th style="width: 10%;">Role</th>
+                        <th style="width: 10%;">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                    <tr>
+                        <td style="width: 10%;">{{i +1 }}</td>
+                        <td style="width: 20%;"><img [src]="item.productPic" width="25%" alt=""></td>
+                        <td style="width: 20%;">{{item.productName}}</td>
+                        <td style="width: 10%;">{{item.productPrice}}</td>
+                        <td style="width: 10%;">{{item.productQuantity}}</td>
+                        <td style="width: 20%;">{{item.productDesc}}</td>
+                        <td style="width: 10%;">
+                            <div class="button_icon_edit" data-bs-toggle="modal" data-bs-target="#ProjectModal">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                            <div class="button_icon_delete">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr class="record">
+                        <td colspan="12" class="p-text-center p-p-3">No Recode Found</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal ProjectModal -->
+<div class="modal fade" id="ProjectModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"> Create Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div #contentToCapture>
+                <div class="modal-body">
+                    <!-- <form [formGroup]="partyForm">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group m-3">
+                                    <label for="text">Party Name</label>
+                                    <input type="text" formControlName="partyName" class="form-control"
+                                        placeholder="Enter Party Name">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Party GST</label>
+                                    <input type="text" formControlName="partyGST" class="form-control"
+                                        placeholder="Enter Party GST">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Mobile Number</label>
+                                    <input type="text" formControlName="mobileNumber" class="form-control"
+                                        placeholder="Enter Mobile Number">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group m-3">
+                                    <label for="text">Pan Number</label>
+                                    <input type="text" formControlName="panNumber" class="form-control"
+                                        placeholder="Enter Pan Number">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Address</label>
+                                    <input type="text" formControlName="address" class="form-control"
+                                        placeholder="Enter Address">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Select Party Role</label>
+                                    <p-dropdown formControlName="partyRole" [options]="Sellerparty" optionLabel="name"
+                                        placeholder="Select Party Roles"></p-dropdown>
+                                </div>
+                            </div>
+                        </div>
+                    </form> -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-secondary" (click)="partyData()"
+                            data-bs-dismiss="modal">Submit</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>

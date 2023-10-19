@@ -1,0 +1,166 @@
+<div class="container-fluid order_list">
+    <form [formGroup]="balanceform">
+        <div class="submitData">
+            <div class="col-md-3">
+                <div class="form-group m-3">
+                    <label for="text">Details</label><span class="required"> *</span>
+                    <input formControlName="name" type="text" class="form-control" placeholder="Enter name">
+                    <div *ngIf="balanceform.get('name')?.hasError('required') && balanceform.get('name')?.touched"
+                        class="error-message">
+                        Name is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group m-3">
+                    <label for="text">Payment Method (Credit/Debit)</label><span class="required"> *</span>
+                    <div class="redioButton">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Credit" value="Credit"
+                                formControlName="PaymentMethod">
+                            <label class="form-check-label" for="Credit">
+                                Credit
+                            </label>
+                        </div>
+                        <div class="form-check" style="margin-left: 30px;">
+                            <input class="form-check-input" type="radio" id="Debit" value="Debit"
+                                formControlName="PaymentMethod">
+                            <label class="form-check-label" for="Debit">
+                                Debit
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group m-3">
+                    <label for="text">Amount</label><span class="required"> *</span>
+                    <input formControlName="amount" type="text" class="form-control" placeholder="Enter amount">
+                    <div *ngIf="balanceform.get('amount')?.hasError('required') && balanceform.get('amount')?.touched"
+                        class="error-message">
+                        Amount is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group m-3">
+                    <div>
+                        <span class="form-label">Select Date</span><span class="required"> *</span>
+                    </div>
+                    <p-calendar formControlName="date" [showIcon]="true" placeholder="Select date"></p-calendar>
+                    <div *ngIf="balanceform.get('date')?.hasError('required') && balanceform.get('date')?.touched"
+                        class="error-message">
+                        Date is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div style="margin-top: 41px;" class="form-group m-3">
+                    <div class="add_admin_button">
+                        <button (click)="balancessheet()"> {{balanceId ? "Update" :"Submit"}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h5>Remaining Balance:- {{remainingBalance}}</h5>
+    </div>
+    <div class="col-md-6">
+        <div class="card prime-table">
+            <div class="table-header">
+                <span style="color: green;">Credit Amount : - {{balanceCreditTotal}}</span>
+                <div class="add_admin_button">
+                </div>
+            </div>
+            <div class="row m-0 table-body">
+                <p-table [value]="balanceCreditData" scrollDirection="both">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 10%;">Sr</th>
+                            <th style="width: 25%;">Details <p-columnFilter type="text" field="name" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" placeholder="Search for names.." display="menu"></p-columnFilter></th>
+                            <th style="width: 25%;">Date</th>
+                            <th style="width: 20%;">Amount</th>
+                            <th style="width: 20%;">Action</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-item let-i="rowIndex">
+                        <tr>
+                            <td style="width: 10%;">{{i +1 }}</td>
+                            <td style="width: 25%;">{{item.name}}</td>
+                            <td style="width: 25%;">{{item.date | date: 'dd/MM/yyyy' }}</td>
+                            <td style="width: 20%;">{{item.amount}}</td>
+                            <td style="width: 20%;">
+                                <div class="action">
+                                    <div class="button_icon_edit" (click)="editData(item , i)">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="button_icon_delete" (click)="deleteCreditData(item)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr class="record">
+                            <td colspan="12" class="p-text-center p-p-3">No Recode Found</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card prime-table">
+            <div class="table-header">
+                <span style="color: red;">Debit Amount : - {{balanceDebitDataTotal}}</span>
+                <div class="add_admin_button">
+                </div>
+            </div>
+            <div class="row m-0 table-body">
+                <p-table [value]="balanceDebitData">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 10%;">Sr</th>
+                            <th style="width: 25%;">Details <p-columnFilter type="text" field="name" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" placeholder="Search for names.." display="menu"></p-columnFilter></th>
+                            <th style="width: 25%;">Date</th>
+                            <th style="width: 20%;">Amount</th>
+                            <th style="width: 20%;">Action</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-item let-i="rowIndex">
+                        <tr>
+                            <td style="width: 10%;">{{i +1 }}</td>
+                            <td style="width: 25%;">{{item.name}}</td>
+                            <td style="width: 25%;">{{item.date | date: 'dd/MM/yyyy' }}</td>
+                            <td style="width: 20%;">{{item.amount}}</td>
+                            <td style="width: 20%;">
+                                <div class="action">
+                                    <div class="button_icon_edit" (click)="editData(item , i)">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="button_icon_delete" (click)="deleteCreditData(item)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr class="record">
+                            <td colspan="12" class="p-text-center p-p-3">No Recode Found</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p-toast></p-toast>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<p-confirmDialog header="Confirmation"></p-confirmDialog>

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "pmtool-12fb5"
+  },
+  "targets": {
+    "pmtool-12fb5": {
+      "hosting": {
+        "tr": [
+          "pmtools"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

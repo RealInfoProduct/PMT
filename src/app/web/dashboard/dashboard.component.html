@@ -1,0 +1,235 @@
+<div class="container-fluid order_list">
+    <div class="card prime-table">
+        <div class="table-header">
+            <span>Product List</span>
+            <div class="add_admin_button">
+                <button type="button" (click)="addProject()" class="btn btn-secondary" data-bs-toggle="modal"
+                    data-bs-target="#ProjectModal">
+                    New Product
+                </button>
+                <button type="button" style="margin-left: 10px;" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#ViewProduct">
+                    Catalog
+                </button>
+            </div>
+        </div>
+        <div class="row m-0 table-body">
+            <p-table [value]="productList" [paginator]="false" [rows]="10" [showCurrentPageReport]="true"
+                [scrollable]="true" scrollDirection="both" responsiveLayout="scroll" [style]="{'margin-top': '8px'}"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 10%;">Sr</th>
+                        <th style="width: 20%;">Image</th>
+                        <th style="width: 20%;">Name</th>
+                        <th style="width: 10%;">Price</th>
+                        <th style="width: 10%;">Quantity</th>
+                        <th style="width: 20%;">Desc</th>
+                        <th style="width: 10%;">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                    <tr>
+                        <td style="width: 10%;">{{i +1 }}</td>
+                        <td style="width: 20%;"><img [src]="item.productPic" width="25%" alt=""></td>
+                        <td style="width: 20%;">{{item.productName}}</td>
+                        <td style="width: 10%;">{{item.productPrice}}</td>
+                        <td style="width: 10%;">{{item.productQuantity}}</td>
+                        <td style="width: 20%;">{{item.productDesc}}</td>
+                        <td style="width: 10%;">
+                            <div class="button_icon_edit" data-bs-toggle="modal" data-bs-target="#ProjectModal"
+                                (click)="editProduct(item)">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                            <div class="button_icon_delete" (click)="deleteProject(item)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr class="record">
+                        <td colspan="12" class="p-text-center p-p-3">No Recode Found</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal ProjectModal -->
+<div class="modal fade" id="ProjectModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" *ngIf="!isEdit">Add Product</h5>
+                <h5 class="modal-title" id="staticBackdropLabel" *ngIf="isEdit">Edit Project</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <!-- ... add code ..  -->
+                <form [formGroup]="productForm">
+                    <div class="row m-2">
+                        <div class="col-6">
+                            <div class="form-group m-3" *ngIf="!isEdit">
+                                <label for="text">Product Image</label>
+                                <div class="flex justify-content-center">
+                                    <p-dropdown [options]="productOptions" optionLabel="label" optionValue="value"
+                                        formControlName="productPic">
+                                        <ng-template let-option pTemplate="item">
+                                            <div class="dropdown-item">
+                                                <img [src]="option.image" width="10%" alt="{{ option.label }}" />
+                                                {{ option.label }}
+                                            </div>
+                                        </ng-template>
+                                    </p-dropdown>
+                                </div>
+                            </div>
+                            <div class="form-group m-3" *ngIf="isEdit">
+                                <div class="image_view">
+                                    <label for="text">Image</label>
+                                </div>
+                                <div class="imageUpdate">
+                                    <img [src]="productEditData.productPic" alt="Product Image" width="25%">
+                                </div>
+                            </div>
+
+                            <div class="form-group m-3">
+                                <label for="text">Product Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Product Name"
+                                    formControlName="productName">
+                            </div>
+                            <div class="form-group m-3">
+                                <label for="text">Product Price</label>
+                                <input type="text" class="form-control" placeholder="Enter Product Price"
+                                    formControlName="productPrice">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group m-2">
+                                <label for="text">Product Quantity</label>
+                                <input type="text" class="form-control" placeholder="Enter Product Quantity"
+                                    formControlName="productQuantity">
+                            </div>
+                            <div class="form-group m-2">
+                                <label for="text">Product Desc</label>
+                                <textarea name="Product Desc" class="form-control" id="" cols="5" rows="5"
+                                    formControlName="productDesc"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <ng-container *ngIf="!isEdit">
+                        <button data-bs-dismiss="modal" aria-label="Close" type="submit" (click)="submit()"
+                            class="btn btn-secondary submit">Submit</button>
+                    </ng-container>
+                    <ng-container *ngIf="isEdit">
+                        <button data-bs-dismiss="modal" aria-label="Close" type="submit" (click)="submit()"
+                            class="btn btn-secondary submit">Update</button>
+                    </ng-container>
+                </div>
+                <!-- ... add code ..  -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal ViewProduct -->
+<div class="modal fade" id="ViewProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Catalog View</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div #contentToCapture>
+                <div class="modal-body">
+                    <img src="../../../assets/pdf view image.png" style="border-radius: 0px 0px 20px 20px;"
+                        width="100%">
+
+                    <div class="row" id="productDetails">
+                        <div class="col-2">
+                            <label class="header">Image</label>
+                        </div>
+                        <div class="col-3">
+                            <label class="header">Name</label>
+                        </div>
+                        <div class="col-3">
+                            <label class="header">Desc</label>
+                        </div>
+                        <div class="col-2">
+                            <label class="header">Quantity</label>
+                        </div>
+                        <div class="col-2">
+                            <label class="header">Price ₹</label>
+                        </div>
+                    </div>
+
+                    <div class="row" id="productDetails" *ngFor="let item of productList">
+                        <div class="col-2">
+                            <div class="value">
+                                <img [src]="item.productPic" width="50%" alt="">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="value">
+                                <span class="products">{{item.productName}}</span>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="value">
+                                <span class="products">{{item.productDesc}}</span>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="value">
+                                <span class="products"
+                                    [ngStyle]="{'color': item.productQuantity > 0 ? 'black' : 'red' }">{{item.productQuantity
+                                    > 0 ? item.productQuantity : 'Out Of Stock'}}</span>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="value">
+                                <span class="products">{{item.productPrice}}/- </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="catalog" style="background: #241c18;
+                            padding: 20px;
+                            color: white;
+                            border-radius: 20px 20px 0 0;">
+                        <div class="address" style="display: flex;
+                        align-items: center;
+                        justify-content: space-between;">
+
+                            <div class="row">
+                                <div class="add">
+                                    <span>Address : </span>
+                                </div>
+                                <p class="add">4062, IFM (International Fashion
+                                    Market), Nr.Ashirvad Soc., Puna
+                                    Kumbariya Rd, Sitanagar, Surat,
+                                    Gujarat-395010</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div> <button (click)="generatePDF2()" class="btn btn-secondary">Export To PDF</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-toast></p-toast>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<p-confirmDialog header="Confirmation"></p-confirmDialog>
