@@ -54,3 +54,17 @@ export interface BalanceList {
     loginId: any,
     createdAt :any
 }
+
+export interface PlatformList {
+    id: any,
+    platFormName : any,
+    loginId: any,
+}
+export interface OrderList {
+    id: any,
+    name : any,
+    date : any,
+    platFormName : any,
+    amount : number,
+    loginId: any,
+}
