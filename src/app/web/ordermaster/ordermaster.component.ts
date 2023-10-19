@@ -29,6 +29,8 @@ export class OrdermasterComponent implements OnInit {
   ngOnInit(): void {
     this.orderdata()
     this.getAllOrderList()
+    const selectedDateValue = new Date(); // Your desired date value
+    this.orderform.controls['date'].setValue(selectedDateValue)
   }
 
   orderdata(){
@@ -59,7 +61,10 @@ export class OrdermasterComponent implements OnInit {
   }
 
   newOrder(){
-    this.orderform.reset()
+    this.orderform.value.details.reset()
+    this.orderform.value.platform.reset()
+    this.orderform.value.amount.reset()
+   
     this.orderdId = ''
   }
   
@@ -105,6 +110,10 @@ export class OrdermasterComponent implements OnInit {
 
   editData(data:any){
     this.orderdId = data.id
+    this.orderform.controls['date'].setValue(new Date(data.date))
+    this.orderform.controls['details'].setValue(data.name)
+    this.orderform.controls['platform'].setValue(this.platFormList.find((id:any) => id.platFormName === data.platFormName))
+    this.orderform.controls['amount'].setValue(data.amount)
   }
 
   deleteOrderlist(item: any) {
