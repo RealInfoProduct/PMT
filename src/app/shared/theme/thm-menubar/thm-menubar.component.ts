@@ -56,6 +56,28 @@ export class ThmMenubarComponent implements OnInit {
       ],
     },
     {
+      icon:'ri-global-line',
+      name:'Plat Form  ',
+      url:'/web/platform',
+      children : [
+        {
+          name:' Plat Form  ',
+          url:'/web/platform',
+        },
+      ],
+    },
+    {
+      icon:'ri-file-list-3-fill',
+      name:'Order Master  ',
+      url:'/web/ordermaster',
+      children : [
+        {
+          name:' Order Master  ',
+          url:'/web/ordermaster',
+        },
+      ],
+    },
+    {
       icon:'ri-logout-box-r-line ri-lg',
       name:'Logout',
       url:'#',
