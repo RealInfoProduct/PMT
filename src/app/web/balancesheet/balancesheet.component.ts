@@ -132,10 +132,6 @@ export class BalancesheetComponent implements OnInit {
             detail: 'Data Add Successfully..',
             life: 1500,
           });
-          this.balanceform.controls['name'].reset()
-          this.balanceform.controls['PaymentMethod'].reset()
-          this.balanceform.controls['amount'].reset()
-          this.isLoading = false
         }
       })
     }

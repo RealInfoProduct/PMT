@@ -9,7 +9,9 @@
         @include button;
     }
 }
-
+.submit{
+    margin-left: 150px;
+}
 .add_button {
     button {
         @include button;
@@ -163,4 +165,5 @@ p {
     display: flex;
     align-items: end;
     justify-content: space-between;
+    
 }

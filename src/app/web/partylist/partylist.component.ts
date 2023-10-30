@@ -60,7 +60,6 @@ export class PartylistComponent implements OnInit {
       loginId: localStorage.getItem('loginId')
     }
 
-    console.log(payload);
 
     if (!this.partyId) {
       this.isLoading = true

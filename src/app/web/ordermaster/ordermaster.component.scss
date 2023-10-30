@@ -38,15 +38,18 @@
     }
 }
 
-.errorMsg {
-    margin-top: -5px;
-    margin-left: 10px;
-    color: red;
-}
+// .errorMsg {
+//     margin-top: -5px;
+//     margin-left: 10px;
+//     color: red;
+// }
 
 .modal-dialog {
     max-width: none;
     width: 50%;
+}
+.submit{
+    margin-left: 150px;
 }
 
 .table-body {
@@ -96,11 +99,13 @@
     padding: 0px;
     margin: 11px;
 }
-.col-3{
+
+.col-3 {
     border-left: 1px solid gainsboro;
 
 }
-.col-2{
+
+.col-2 {
     border-left: 1px solid gainsboro;
 
 }
@@ -118,13 +123,30 @@ p {
     letter-spacing: 2px;
 }
 
-.bi-telephone-plus{
+.bi-telephone-plus {
     margin: 4px;
 }
 
-.details{
+.submitData {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    padding: 5px 5px;
+}
+
+.modal-footer {
+    margin-right: 13px;
+}
+
+.details {
     text-align: center;
 }
-.header{
+
+.header {
     font-weight: bold;
 }

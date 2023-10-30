@@ -46,7 +46,7 @@
 
 .modal-dialog {
     max-width: none;
-    width: 50%;
+    width: 30%;
 }
 
 .table-body {
@@ -96,11 +96,13 @@
     padding: 0px;
     margin: 11px;
 }
-.col-3{
+
+.col-3 {
     border-left: 1px solid gainsboro;
 
 }
-.col-2{
+
+.col-2 {
     border-left: 1px solid gainsboro;
 
 }
@@ -118,13 +120,18 @@ p {
     letter-spacing: 2px;
 }
 
-.bi-telephone-plus{
+.bi-telephone-plus {
     margin: 4px;
 }
 
-.details{
+.modal-footer {
+    margin-top: 40px;
+}
+
+.details {
     text-align: center;
 }
-.header{
+
+.header {
     font-weight: bold;
 }
