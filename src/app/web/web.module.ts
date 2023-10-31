@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BalancesheetComponent } from './balancesheet/balancesheet.component';
 import { PlatformmasterComponent } from './platformmaster/platformmaster.component';
 import { OrdermasterComponent } from './ordermaster/ordermaster.component';
+import { InvoicemasterComponent } from './invoicemaster/invoicemaster.component';
 
 
 
@@ -23,6 +24,7 @@ import { OrdermasterComponent } from './ordermaster/ordermaster.component';
     BalancesheetComponent,
     PlatformmasterComponent,
     OrdermasterComponent,
+    InvoicemasterComponent,
   ],
   imports: [
     CommonModule,

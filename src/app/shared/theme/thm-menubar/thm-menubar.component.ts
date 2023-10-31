@@ -78,6 +78,17 @@ export class ThmMenubarComponent implements OnInit {
       ],
     },
     {
+      icon:'ri-file-list-3-fill',
+      name:'Invoice Master  ',
+      url:'/web/invoicemaster',
+      children : [
+        {
+          name:' Invoice Master  ',
+          url:'/web/invoicemaster',
+        },
+      ],
+    },
+    {
       icon:'ri-logout-box-r-line ri-lg',
       name:'Logout',
       url:'#',

@@ -75,7 +75,8 @@ export class FirmMasterComponent implements OnInit {
       firm_GSTpercentage: this.firmMasterList.value.GSTpercentage,
       firm_bankaccountno: this.firmMasterList.value.bankaccountno,
       firm_pannor: this.firmMasterList.value.panno,
-      loginId: localStorage.getItem('loginId')
+      loginId: localStorage.getItem('loginId'),
+      invoiceNumber: 0
     }
     if (!this.firmId) {
       this.isLoading = true

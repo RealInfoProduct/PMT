@@ -98,9 +98,10 @@
                         </div>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-secondary" (click)="partyData()"
-                            data-bs-dismiss="modal">UpDate</button>
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                            <div class="add_admin_button">
+                                <button class="submit"> {{partyId ? "Update" :"Submit"}}</button>
+                            </div>
                     </div>
                 </div>
             </div>

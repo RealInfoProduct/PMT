@@ -42,6 +42,7 @@ export interface FirmMasterList {
     firm_GSTpercentage: any,
     firm_bankaccountno: any,
     firm_pannor: any,
+    invoiceNumber : number
     loginId :any    
 }
 
@@ -66,5 +67,15 @@ export interface OrderList {
     date : any,
     platFormName : any,
     amount : number,
+    loginId: any,
+}
+export interface InvoiceMaster {
+    id: any,
+    firm : any,
+    party : any,
+    details : any,
+    date : any,
+    amount : number,
+    invoiceNumber : number,
     loginId: any,
 }

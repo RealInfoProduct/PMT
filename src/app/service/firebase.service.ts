@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { addDoc, collection, collectionData, deleteDoc, doc, Firestore } from '@angular/fire/firestore';
 import { updateDoc } from 'firebase/firestore';
-import { BalanceList, FirmMasterList, OrderList, Partylist, PlatformList, ProductList } from '../interface/AuthResponse';
+import { BalanceList, FirmMasterList, InvoiceMaster, OrderList, Partylist, PlatformList, ProductList } from '../interface/AuthResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -154,6 +154,29 @@ export class FirebaseService {
 
   deleteOrderList(data: OrderList) {
     let docRef = doc(collection(this.fService, `OrderList`), data.id);
+    return deleteDoc(docRef)
+  }
+
+  // InvoiceMaster
+
+  addInvoiceMaster(data: InvoiceMaster) {
+    data.id = doc(collection(this.fService, 'id')).id
+    return addDoc(collection(this.fService, 'InvoiceMaster'), data)
+  }
+
+  getInvoiceMaster() {
+    let dataRef = collection(this.fService, `InvoiceMaster`)
+    return collectionData(dataRef, { idField: 'id' })
+  }
+
+
+  updateInvoiceMaster(data: InvoiceMaster, InvoiceMaster: any) {
+    let dataRef = doc(this.fService, `InvoiceMaster/${data}`);
+    return updateDoc(dataRef, InvoiceMaster)
+  }
+
+  deleteInvoiceMaster(data: InvoiceMaster) {
+    let docRef = doc(collection(this.fService, `InvoiceMaster`), data.id);
     return deleteDoc(docRef)
   }
 }

@@ -7,6 +7,7 @@ import { FirmMasterComponent } from './firm-master/firm-master.component';
 import { BalancesheetComponent } from './balancesheet/balancesheet.component';
 import { PlatformmasterComponent } from './platformmaster/platformmaster.component';
 import { OrdermasterComponent } from './ordermaster/ordermaster.component';
+import { InvoicemasterComponent } from './invoicemaster/invoicemaster.component';
 
 const routes: Routes = [{
   path: '',
@@ -41,6 +42,10 @@ const routes: Routes = [{
     {
       path: 'ordermaster',
       component: OrdermasterComponent,
+    },
+    {
+      path: 'invoicemaster',
+      component: InvoicemasterComponent,
     },
   ]
 }];
