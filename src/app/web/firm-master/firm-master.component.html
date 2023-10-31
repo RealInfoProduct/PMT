@@ -73,7 +73,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel"> Create Firm</h5>
+                <h5 class="modal-title" id="staticBackdropLabel"> {{firmId ? "UpDate Firm" : "Create Firm"}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div>
@@ -144,13 +144,18 @@
                                     <input type="text" formControlName="panno" class="form-control"
                                         placeholder="Enter Pan No">
                                 </div>
+                                <div class="form-group m-3">
+                                    <label for="text">Logo Upload </label>
+                                        <label for="text"></label>
+                                        <input type="file" class="form-control" (change)="fileChange($event)">
+                                </div>
                             </div>
                         </div>
                     </form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-secondary" (click)="partyData()"
-                            data-bs-dismiss="modal">UpDate</button>
+                            data-bs-dismiss="modal">{{firmId ? "UpDate" : "Submit"}}</button>
                     </div>
                 </div>
             </div>
