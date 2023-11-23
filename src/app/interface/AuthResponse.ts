@@ -55,6 +55,15 @@ export interface BalanceList {
     loginId: any,
     createdAt :any
 }
+export interface PersonalBalanceList {
+    id: any,
+    name : any,
+    date : any,
+    PaymentType : any,
+    amount : number,
+    loginId: any,
+    createdAt :any
+}
 
 export interface PlatformList {
     id: any,

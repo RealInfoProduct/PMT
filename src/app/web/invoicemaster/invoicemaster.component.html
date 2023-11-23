@@ -3,7 +3,7 @@
         <div class="table-header">
             <span>Invoice List</span>
             <div class="add_admin_button">
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ProjectModal">
+                <button type="button" (click)="addinvoice()" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ProjectModal">
                     New Invoice
                 </button>
             </div>
@@ -16,7 +16,7 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 10%;">Sr</th>
-                        <th style="width: 15%;">Form Name</th>
+                        <th style="width: 15%;">firm Name</th>
                         <th style="width: 15%;">Party Name</th>
                         <th style="width: 10%;">Amount</th>
                         <th style="width: 10%;">Details</th>
@@ -28,18 +28,21 @@
                 <ng-template pTemplate="body" let-item let-i="rowIndex">
                     <tr>
                         <td style="width: 10%;">{{i +1 }}</td>
-                        <td style="width: 15%;">{{item.firm}}</td>
-                        <td style="width: 15%;">{{item.party}}</td>
+                        <td style="width: 15%;">{{item.firmName}}</td>
+                        <td style="width: 15%;">{{item.partyName}}</td>
                         <td style="width: 10%;">{{item.amount}}</td>
                         <td style="width: 10%;">{{item.details}}</td>
                         <td style="width: 20%;">{{item.date | date: 'dd/MM/yyyy'}}</td>
                         <td style="width: 10%;">{{item.invoiceNumber}}</td>
                         <td style="width: 10%;">
-                            <div class="button_icon_edit" data-bs-toggle="modal" data-bs-target="#ProjectModal">
+                            <div class="button_icon_edit" (click)="editData(item)" data-bs-toggle="modal" data-bs-target="#ProjectModal">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </div>
-                            <div class="button_icon_delete">
+                            <div class="button_icon_delete" (click)="deleteInvoiceList(item)">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                            <div class="button_icon_delete" (click)="printData(item)">
+                                <!-- <i class="fa fa-trash" aria-hidden="true"></i> -->Print
                             </div>
                         </td>
                     </tr>
@@ -53,7 +56,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Modal ProjectModal -->
 <div class="modal fade" id="ProjectModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

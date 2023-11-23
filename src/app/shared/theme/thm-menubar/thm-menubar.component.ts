@@ -67,7 +67,7 @@ export class ThmMenubarComponent implements OnInit {
       ],
     },
     {
-      icon:'ri-file-list-3-fill',
+      icon:'ri-shopping-cart-line',
       name:'Order Master  ',
       url:'/web/ordermaster',
       children : [
@@ -85,6 +85,28 @@ export class ThmMenubarComponent implements OnInit {
         {
           name:' Invoice Master  ',
           url:'/web/invoicemaster',
+        },
+      ],
+    },
+    {
+      icon:'ri-survey-fill',
+      name:'Bill  ',
+      url:'/web/bill',
+      children : [
+        {
+          name:' Bill  ',
+          url:'/web/bill',
+        },
+      ],
+    },
+    {
+      icon:'ri-bank-fill',
+      name:'Personal Passbook  ',
+      url:'/web/personal-passbook',
+      children : [
+        {
+          name:'Personal Passbook',
+          url:'/web/personal-passbook',
         },
       ],
     },

@@ -83,6 +83,9 @@ export class OrdermasterComponent implements OnInit {
           detail: 'Data Add Successfully..',
           life: 1500,
         });
+        this.orderform.controls['details'].reset()
+        this.orderform.controls['platform'].reset()
+        this.orderform.controls['amount'].reset()
         this.getAllOrderList()
         this.isLoading = false
       })

@@ -8,6 +8,8 @@ import { BalancesheetComponent } from './balancesheet/balancesheet.component';
 import { PlatformmasterComponent } from './platformmaster/platformmaster.component';
 import { OrdermasterComponent } from './ordermaster/ordermaster.component';
 import { InvoicemasterComponent } from './invoicemaster/invoicemaster.component';
+import { BillComponent } from './bill/bill.component';
+import { PersonalPassbookComponent } from './personal-passbook/personal-passbook.component';
 
 const routes: Routes = [{
   path: '',
@@ -46,6 +48,14 @@ const routes: Routes = [{
     {
       path: 'invoicemaster',
       component: InvoicemasterComponent,
+    },
+    {
+      path: 'bill',
+      component: BillComponent,
+    },
+    {
+      path: 'personal-passbook',
+      component: PersonalPassbookComponent,
     },
   ]
 }];

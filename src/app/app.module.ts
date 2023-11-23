@@ -28,7 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     LoginComponent,
     // SpinnerComponent,
-    RegistrationComponent
+    RegistrationComponent,
   ],
 
   imports: [

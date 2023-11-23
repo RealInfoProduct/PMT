@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { addDoc, collection, collectionData, deleteDoc, doc, Firestore } from '@angular/fire/firestore';
 import { updateDoc } from 'firebase/firestore';
-import { BalanceList, FirmMasterList, InvoiceMaster, OrderList, Partylist, PlatformList, ProductList } from '../interface/AuthResponse';
+import { BalanceList, FirmMasterList, InvoiceMaster, OrderList, Partylist, PersonalBalanceList, PlatformList, ProductList } from '../interface/AuthResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -169,7 +169,6 @@ export class FirebaseService {
     return collectionData(dataRef, { idField: 'id' })
   }
 
-
   updateInvoiceMaster(data: InvoiceMaster, InvoiceMaster: any) {
     let dataRef = doc(this.fService, `InvoiceMaster/${data}`);
     return updateDoc(dataRef, InvoiceMaster)
@@ -177,6 +176,28 @@ export class FirebaseService {
 
   deleteInvoiceMaster(data: InvoiceMaster) {
     let docRef = doc(collection(this.fService, `InvoiceMaster`), data.id);
+    return deleteDoc(docRef)
+  }
+
+  // PersonalBalanceList
+
+  addPersonalBalanceList(data: PersonalBalanceList) {
+    data.id = doc(collection(this.fService, 'id')).id
+    return addDoc(collection(this.fService, 'PersonalBalanceList'), data)
+  }
+
+  getPersonalBalanceList() {
+    let dataRef = collection(this.fService, `PersonalBalanceList`)
+    return collectionData(dataRef, { idField: 'id' })
+  }
+
+  updatePersonalBalanceList(data: PersonalBalanceList, PersonalBalanceList: any) {
+    let dataRef = doc(this.fService, `PersonalBalanceList/${data}`);
+    return updateDoc(dataRef, PersonalBalanceList)
+  }
+
+  deletePersonalBalanceList(data: PersonalBalanceList) {
+    let docRef = doc(collection(this.fService, `PersonalBalanceList`), data.id);
     return deleteDoc(docRef)
   }
 }

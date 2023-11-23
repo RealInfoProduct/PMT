@@ -26,4 +26,12 @@ export class CommonService {
   seticonActiveIndex(value:any){
     this.iconindex.next(value);
   }
+
+  getInoviceData(){
+    return this.invoiceData
+  }
+  setInoviceData(data:any){
+    this.invoiceData = data
+
+  }
 }

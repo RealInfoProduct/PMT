@@ -1,0 +1,154 @@
+<div class="add_admin_button">
+    <button type="button" class="btn btn-secondary" (click)="generatePDF()">Generate PDF</button>
+</div>
+
+<div id="pdfContent">
+    <div class="bill">
+        <div class="brand-section" style="text-align: center;">
+            <div style="border: 1px solid;
+            margin: 0px;
+            padding: 5px;">
+                <div style="display: flex;
+                justify-content: space-between;">
+                    <label><b>Mo : {{invoiceData?.firmData?.firm_mobileno}}</b></label>
+                    <label><b>|| શ્રી ગણેશાય નમ ||</b></label>
+                    <label><b>Mo : {{invoiceData?.firmData?.firm_personalmobileno}}</b></label>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h2 style="padding: 8px 0;">{{invoiceData?.firmData?.firm_header}}</h2>
+                    </div>
+                    <div class="col-12">
+                        <div class="company-details">
+                            <p style="color: black;padding: 5px 0;">{{invoiceData?.firmData?.firm_address}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <div class="row" style="border: 1px solid;
+            margin: 0px;
+            background-color: #F5F5F5;
+            padding: 5px;
+            padding-top: 10px;">
+                <div class="col-6">
+                    <p class="sub-heading"><b>M/s :</b> {{invoiceData?.partyName}}</p>
+                    <p class="sub-heading"><b>Address :</b> {{invoiceData?.partyData?.party_address}}</p>
+                    <p class="sub-heading"><b>MO :</b> {{invoiceData?.partyData?.party_mobile}} </p>
+                    <p class="sub-heading"><b>GST No :</b> {{invoiceData?.partyData?.party_partygstin}}</p>
+                </div>
+                <div class="col-6">
+                    <h2 class="heading"><b>Number :</b> {{invoiceData?.invoiceNumber}}</h2>
+                    <p class="sub-heading"><b>Date : </b> {{invoiceData?.date}}</p>
+                    <p class="sub-heading"><b>PAN : </b> {{invoiceData?.partyData?.party_panNumber}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <table class="table-bordered">
+                <thead>
+                    <tr style="color: #ffff; background-color: #0694E5;">
+                        <th style="text-align: center;"><b>Product</b></th>
+                        <th style="text-align: center;" class="w-20"><b>Price</b></th>
+                        <th style="text-align: center;" class="w-20"><b>Quantity</b></th>
+                        <th style="text-align: center;" class="w-20"><b>Grandtotal</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #F5F5F5;">
+                        <td>{{invoiceData?.details}}</td>
+                        <td>{{invoiceData?.amount}}</td>
+                        <td>1</td>
+                        <td>{{invoiceData?.amount}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: end;"> <b>Sub Total</b></td>
+                        <td><b> &#x20B9; {{invoiceData?.amount}}/- </b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: start; background-color: #F5F5F5;"><b>One Thousand Three
+                                Hundred.</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: end;">
+                            <div style="text-align: justify;
+                        display: flex;
+                        justify-content: space-between;">
+                                <div style="display: flex;
+                          align-items: center;">
+                                    <p class="sub-heading" style="padding-right: 20px;"><b>Bank :- </b>
+                                        {{invoiceData?.firmData?.firm_bankname}}</p>
+                                    <p class="sub-heading" style="padding-right: 20px;"><b>IFSC Code :- </b>
+                                        {{invoiceData?.firmData?.firm_BankIFSC}}
+                                    </p>
+                                    <p class="sub-heading" style="padding-right: 20px;"><b>A/c No :- </b>
+                                        {{invoiceData?.firmData?.firm_bankaccountno}} </p>
+                                </div>
+                                <div>
+                                    <span><b>Grand Total</b></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><b> &#x20B9; {{invoiceData?.amount}}/-</b></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+        </div>
+
+        <div class="body-section">
+            <div class="terms-signature row" style="margin: 0px; background-color: #F5F5F5;">
+                <div class="terms col-md-9">
+                    <span><b>Terms and Conditions :</b></span>
+                    <br>
+                    <span>1.The Goods are dispatched on your account and at your risk and responsibility.</span>
+                    <br>
+                    <span>2.Any complaint regarding goods should be reported in writing within 24 hours of the receipt
+                        of
+                        the goods.</span>
+                    <br>
+                    <span>3.Goods sold will not taken back.</span>
+                    <br>
+                    <span>4.Payment will be accepted only by A/C payee's draft / cheque.</span>
+                    <br>
+                    <span>5.Interest at 2.0% per month charged on account not paid within due course.</span>
+                    <br>
+                    <span>6.Subject to SURAT jurisdiction. E. & O.E.</span>
+                    <br>
+                    <span>7.No Dyeing guarantee.</span>
+                </div>
+                <div class="signature col-md-3">
+                    <span>{{invoiceData?.firmData?.firm_header}}</span>
+                    <br>
+                    <label>Signature</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <table class="table-bordered">
+                <thead>
+                    <tr style="color: #ffff; background-color: #0694E5;">
+                        <td><b>Date</b></td>
+                        <td><b>Chq. No</b></td>
+                        <td><b>Amount</b></td>
+                        <td><b>Bank</b></td>
+                        <td><b>Bill No</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>20-20-2021</td>
+                        <td>DSC223AW</td>
+                        <td>1200</td>
+                        <td>AXIS BANK</td>
+                        <td>001</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
