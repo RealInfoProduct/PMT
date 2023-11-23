@@ -43,7 +43,8 @@ export interface FirmMasterList {
     firm_bankaccountno: any,
     firm_pannor: any,
     invoiceNumber : number
-    loginId :any    
+    loginId :any,
+    uploadLogoURL : any
 }
 
 export interface BalanceList {
