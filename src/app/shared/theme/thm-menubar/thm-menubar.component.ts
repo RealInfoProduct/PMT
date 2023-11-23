@@ -88,17 +88,17 @@ export class ThmMenubarComponent implements OnInit {
         },
       ],
     },
-    {
-      icon:'ri-survey-fill',
-      name:'Bill  ',
-      url:'/web/bill',
-      children : [
-        {
-          name:' Bill  ',
-          url:'/web/bill',
-        },
-      ],
-    },
+    // {
+    //   icon:'ri-survey-fill',
+    //   name:'Bill  ',
+    //   url:'/web/bill',
+    //   children : [
+    //     {
+    //       name:' Bill  ',
+    //       url:'/web/bill',
+    //     },
+    //   ],
+    // },
     {
       icon:'ri-bank-fill',
       name:'Personal Passbook  ',
